@@ -86,8 +86,10 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(({
       }
     },
     setChecked: (newValue: boolean) => {
-      setChecked(newValue);
-      onToggle?.(newValue);
+      if (!disabled) {
+        setChecked(newValue);
+        onToggle?.(newValue);
+      }
     }
   }));
 
@@ -101,8 +103,10 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(({
           <IOSSwitch
             checked={checked}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setChecked(e.target.checked);
-              onToggle?.(e.target.checked);
+              if (!disabled) {
+                setChecked(e.target.checked);
+                onToggle?.(e.target.checked);
+              }
             }}
             disabled={disabled}
           />
