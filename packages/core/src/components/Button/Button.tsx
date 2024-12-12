@@ -8,8 +8,8 @@ export interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({ label, onClick }) => {
   return (
-    <button className="button" onClick={onClick}>
-      {label} Tes1ttt
+    <button type="button" className="button" onClick={onClick}>
+      {label} test
     </button>
   );
 }; 

@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import type { StoryFn } from '@storybook/react';
+import '@components/core/dist/index.css';
 
 const theme = createTheme({});
 
 export const decorators = [
-  (Story) => (
+  (Story: StoryFn) => (
     <React.StrictMode>
       <ThemeProvider theme={theme}>
         <CssBaseline />

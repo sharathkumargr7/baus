@@ -26,13 +26,18 @@ const config = [
     ],
     plugins: [
       peerDepsExternal(),
-      resolve(),
+      resolve({
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss']
+      }),
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
       postcss({
-        modules: false,
         extract: true,
+        modules: false,
         use: ['sass'],
+        extensions: ['.scss', '.css'],
+        minimize: true,
+        inject: false
       }),
       image(),
     ],
@@ -41,7 +46,7 @@ const config = [
     input: 'src/index.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [dts()],
-    external: [/@mui\/material/, /@emotion/]
+    external: [/@mui\/material/, /@emotion/, /\.scss$/]
   },
 ];
 
