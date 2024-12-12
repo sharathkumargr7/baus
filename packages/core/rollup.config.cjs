@@ -5,6 +5,7 @@ const { dts } = require('rollup-plugin-dts');
 const postcss = require('rollup-plugin-postcss');
 const image = require('@rollup/plugin-image');
 const peerDepsExternal = require('rollup-plugin-peer-deps-external');
+const svgr = require('@svgr/rollup');
 
 const packageJson = require('./package.json');
 
@@ -27,10 +28,14 @@ const config = [
     plugins: [
       peerDepsExternal(),
       resolve({
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss']
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.svg']
       }),
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
+      svgr({
+        typescript: true,
+        ref: true
+      }),
       postcss({
         extract: true,
         modules: false,
@@ -39,7 +44,6 @@ const config = [
         minimize: true,
         inject: false
       }),
-      image(),
     ],
   },
   {
