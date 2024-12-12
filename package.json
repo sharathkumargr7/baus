@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "license": "MIT",
+  "author": "Baus",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspace @components/core build",
+    "dev": "yarn workspace @components/showcase dev",
+    "build-showcase": "yarn workspace @components/showcase build",
+    "dev:all": "concurrently \"yarn workspace @components/core dev\" \"yarn workspace @components/showcase storybook\"",
+    "install-all": "yarn install && yarn workspace @components/core install && yarn workspace @components/showcase install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+} 
