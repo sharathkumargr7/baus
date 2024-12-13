@@ -27,6 +27,16 @@ module.exports = {
     autodocs: true,
   },
   webpackFinal: async (config) => {
+    // Handle SVG files
+    const fileLoaderRule = config.module.rules.find(rule => rule.test?.test?.('.svg'));
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/;
+    }
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
     config.resolve.alias = {
       ...config.resolve.alias,
       '@emotion/core': '@emotion/react',

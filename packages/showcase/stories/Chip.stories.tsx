@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chip, Icons } from '@components/core';
+import { Chip, CustomIcon, Menu } from '@components/core';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Chip> = {
@@ -34,13 +34,22 @@ export const Primary: Story = {
   },
 };
 
-const ArrowDownXs = Icons['arrow-down-xs'];
-
 export const WithIcon: Story = {
   render: () => (
     <Chip
       label="With Icon"
-      icon={<ArrowDownXs />}
+      icon={<Menu/>}
+      variant="filled"
+      color="primary"
+    />
+  ),
+};
+
+export const WithIconIndex: Story = {
+  render: () => (
+    <Chip
+      label="With Icon (Index)"
+      icon={<CustomIcon svg="arrow-down-xs" />}
       variant="filled"
       color="primary"
     />
@@ -52,7 +61,7 @@ export const WithDelete: Story = {
     <Chip
       label="Deletable"
       onDelete={() => {}}
-      icon={<ArrowDownXs />}
+      icon={<CustomIcon svg="arrow-down-xs" />}
       variant="outlined"
       color="secondary"
     />

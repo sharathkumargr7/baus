@@ -11,8 +11,11 @@
   "scripts": {
     "build": "rollup -c rollup.config.cjs",
     "dev": "rollup -c rollup.config.cjs -w",
+    "dev:all": "concurrently \"yarn dev\" \"yarn watch:icons\"",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "generate:icons": "ts-node --project scripts/tsconfig.json scripts/generateIcons.ts",
+    "watch:icons": "ts-node scripts/watchIcons.ts"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.0",
@@ -37,11 +40,14 @@
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.2",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
+    "@types/svgo": "^3.0.0",
     "@types/testing-library__jest-dom": "^6.0.0",
     "autoprefixer": "^10.4.20",
     "babel-jest": "^29.7.0",
+    "chokidar": "^4.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
@@ -53,6 +59,8 @@
     "rollup-plugin-watch": "^1.0.2",
     "sass": "^1.82.0",
     "sass-loader": "^16.0.4",
+    "svgo": "^3.3.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.0.4"
   },
   "license": "MIT",

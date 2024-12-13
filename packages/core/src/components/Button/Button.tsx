@@ -1,32 +1,29 @@
 import React from 'react';
-import { Button as MuiButton } from '@mui/material';
+import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material';
 import './Button.scss';
 
-export interface ButtonProps {
+export interface ButtonProps extends Omit<MuiButtonProps, 'startIcon' | 'endIcon'> {
   label: string;
-  onClick?: () => void;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
-  variant?: 'contained' | 'outlined' | 'text';
-  color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+  startIcon?: React.ReactElement;
+  endIcon?: React.ReactElement;
 }
 
-export const Button: React.FC<ButtonProps> = ({ 
-  label, 
-  onClick, 
+export const Button: React.FC<ButtonProps> = ({
+  label,
   startIcon,
   endIcon,
   variant = 'contained',
-  color = 'primary'
+  color = 'primary',
+  ...props
 }) => {
   return (
     <MuiButton
       className="button"
-      onClick={onClick}
       variant={variant}
       color={color}
       startIcon={startIcon}
       endIcon={endIcon}
+      {...props}
     >
       {label}
     </MuiButton>

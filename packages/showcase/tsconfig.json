@@ -7,6 +7,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "composite": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -14,10 +15,16 @@
     "isolatedModules": true,
     "jsx": "react",
     "baseUrl": ".",
+    "types": ["@testing-library/jest-dom"],
     "paths": {
       "@components/core": ["../core/src"]
     }
   },
-  "include": ["stories", ".storybook"],
+  "files": ["../core/src/types/svg.d.ts"],
+  "include": [
+    "stories",
+    ".storybook",
+    "types"
+  ],
   "references": [{ "path": "../core" }]
 } 
